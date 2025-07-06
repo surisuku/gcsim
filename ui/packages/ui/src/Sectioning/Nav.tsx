@@ -8,18 +8,18 @@ import {
   Icon,
   IconName,
   Navbar,
-} from "@blueprintjs/core";
-import { useState } from "react";
-import { useTranslation } from "react-i18next";
-import { FaDiscord } from "react-icons/fa";
-import { IoIosDocument, IoIosMenu } from "react-icons/io";
-import { MdOutlineUpdate } from "react-icons/md";
-import { Link } from "react-router-dom";
-import { useAppSelector } from "../Stores/store";
-import logo from "./logo.png";
+} from '@blueprintjs/core';
+import {useState} from 'react';
+import {useTranslation} from 'react-i18next';
+import {FaDiscord} from 'react-icons/fa';
+import {IoIosDocument, IoIosMenu} from 'react-icons/io';
+import {MdOutlineUpdate} from 'react-icons/md';
+import {Link} from 'react-router-dom';
+import {useAppSelector} from '../Stores/store';
+import logo from './logo.png';
 
 export default ({}) => {
-  const { t, i18n } = useTranslation();
+  const {t, i18n} = useTranslation();
   const user = useAppSelector((state) => state.user);
   const [isOpen, setIsOpen] = useState(false);
 
@@ -28,34 +28,37 @@ export default ({}) => {
       key="sim"
       href="/simulator"
       icon="calculator"
-      text={t("nav.simulator")}
+      text={t('nav.simulator')}
+    />,
+    <NavButton
+      key="configs"
+      href="/configs"
+      icon="projects"
+      text={t('nav.configs')}
     />,
     <AnchorButton
       key="db"
       className={Classes.MINIMAL}
       icon="database"
       href="https://simpact.app/"
-      target="_blank"
-    >
-      <span>{t<string>("nav.teams_db")}</span>
+      target="_blank">
+      <span>{t<string>('nav.teams_db')}</span>
     </AnchorButton>,
     <AnchorButton
       key="doc"
       className={Classes.MINIMAL}
       icon={<IoIosDocument size="24px" color="#abb3bf" />}
       href="https://docs.gcsim.app"
-      target="_blank"
-    >
-      <span>{t<string>("nav.documentation")}</span>
+      target="_blank">
+      <span>{t<string>('nav.documentation')}</span>
     </AnchorButton>,
     <AnchorButton
       key="update"
       className={Classes.MINIMAL}
       icon={<MdOutlineUpdate size="24px" color="#abb3bf" />}
       href="https://github.com/genshinsim/gcsim/releases"
-      target="_blank"
-    >
-      <span>{t<string>("nav.releases")}</span>
+      target="_blank">
+      <span>{t<string>('nav.releases')}</span>
     </AnchorButton>,
     <AnchorButton
       key="discord"
@@ -63,8 +66,7 @@ export default ({}) => {
       href="https://discord.gg/m7jvjdxx7q"
       target="_blank"
       rel="noreferrer"
-      icon={<FaDiscord size="24px" color="#abb3bf" />}
-    >
+      icon={<FaDiscord size="24px" color="#abb3bf" />}>
       {/* no localization needed */}
       <span>Discord</span>
     </AnchorButton>,
@@ -88,34 +90,30 @@ export default ({}) => {
             </Navbar.Group>
             <Navbar.Group
               align={Alignment.LEFT}
-              className="!hidden min-[902px]:!flex !items-stretch"
-            >
+              className="!hidden min-[902px]:!flex !items-stretch">
               <Navbar.Divider className="!hidden min-[550px]:!flex self-center" />
               {PageNavs}
             </Navbar.Group>
             <Navbar.Group
               align={Alignment.RIGHT}
-              className="!hidden min-[902px]:!flex !items-stretch"
-            >
+              className="!hidden min-[902px]:!flex !items-stretch">
               {/* <NavButton href="/account" icon="user" text={user.uid === "" ? "Guest" : user.name} /> */}
               <HTMLSelect
                 className="ml-2 self-center"
                 value={i18n.resolvedLanguage}
-                onChange={(e) => i18n.changeLanguage(e.target.value)}
-              >
-                <option value="en">{t<string>("nav.english")}</option>
-                <option value="zh">{t<string>("nav.chinese")}</option>
-                <option value="ja">{t<string>("nav.japanese")}</option>
-                <option value="ko">{t<string>("nav.korean")}</option>
-                <option value="es">{t<string>("nav.spanish")}</option>
-                <option value="ru">{t<string>("nav.russian")}</option>
-                <option value="de">{t<string>("nav.german")}</option>
+                onChange={(e) => i18n.changeLanguage(e.target.value)}>
+                <option value="en">{t<string>('nav.english')}</option>
+                <option value="zh">{t<string>('nav.chinese')}</option>
+                <option value="ja">{t<string>('nav.japanese')}</option>
+                <option value="ko">{t<string>('nav.korean')}</option>
+                <option value="es">{t<string>('nav.spanish')}</option>
+                <option value="ru">{t<string>('nav.russian')}</option>
+                <option value="de">{t<string>('nav.german')}</option>
               </HTMLSelect>
             </Navbar.Group>
             <Navbar.Group
               align={Alignment.RIGHT}
-              className="!flex min-[902px]:!hidden !items-stretch"
-            >
+              className="!flex min-[902px]:!hidden !items-stretch">
               <Button
                 className={Classes.MINIMAL}
                 icon={<IoIosMenu size="24px" color="#abb3bf" />}
@@ -133,15 +131,14 @@ export default ({}) => {
           <HTMLSelect
             className="my-1 ml-2 self-center"
             value={i18n.resolvedLanguage}
-            onChange={(e) => i18n.changeLanguage(e.target.value)}
-          >
-            <option value="en">{t<string>("nav.english")}</option>
-            <option value="zh">{t<string>("nav.chinese")}</option>
-            <option value="ja">{t<string>("nav.japanese")}</option>
-            <option value="ko">{t<string>("nav.korean")}</option>
-            <option value="es">{t<string>("nav.spanish")}</option>
-            <option value="ru">{t<string>("nav.russian")}</option>
-            <option value="de">{t<string>("nav.german")}</option>
+            onChange={(e) => i18n.changeLanguage(e.target.value)}>
+            <option value="en">{t<string>('nav.english')}</option>
+            <option value="zh">{t<string>('nav.chinese')}</option>
+            <option value="ja">{t<string>('nav.japanese')}</option>
+            <option value="ko">{t<string>('nav.korean')}</option>
+            <option value="es">{t<string>('nav.spanish')}</option>
+            <option value="ru">{t<string>('nav.russian')}</option>
+            <option value="de">{t<string>('nav.german')}</option>
           </HTMLSelect>
         </Navbar>
       </Collapse>
@@ -155,14 +152,13 @@ type NavButtonProps = {
   text: string;
 };
 
-const NavButton = ({ href, icon, text }: NavButtonProps) => {
+const NavButton = ({href, icon, text}: NavButtonProps) => {
   return (
     <Link
       to={href}
       role="button"
       className="bp4-button bp4-minimal"
-      tabIndex={0}
-    >
+      tabIndex={0}>
       <Icon icon={icon} />
       <span className="bp4-button-text">{text}</span>
     </Link>
