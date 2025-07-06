@@ -1,3 +1,4 @@
+export * from "./Configs";
 export * from "./Dash";
 export * from "./Simulator";
 export * from "./Viewer";
