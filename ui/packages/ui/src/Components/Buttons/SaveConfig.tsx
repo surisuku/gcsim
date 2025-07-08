@@ -8,14 +8,15 @@ import {
   Intent,
   Toaster,
 } from '@blueprintjs/core';
-import {LocalConfig} from '@ui/Pages';
+import {SimResults} from '@gcsim/types';
 import classNames from 'classnames';
 import {memo, RefObject, useState} from 'react';
 import {useTranslation} from 'react-i18next';
+import {v4 as uuidv4} from 'uuid';
 
 type Props = {
   toast: RefObject<Toaster>;
-  data?: LocalConfig;
+  data: SimResults | null;
   className?: string;
 };
 
@@ -39,10 +40,14 @@ const SaveConfig = ({toast, data, className}: Props) => {
   };
 
   const onConfirm = (name: string) => {
-    // TODO: append id to storage
-    // TODO: add config to storage
+    const id = uuidv4();
 
-    console.log(`Saved config with name ${name}`);
+    const configs = JSON.parse(
+      localStorage.getItem('gcsim-config-list') ?? '[]',
+    );
+    configs.push(id);
+    localStorage.setItem('gcsim-config-list', JSON.stringify(configs));
+    localStorage.setItem(`gcsim-config.${id}`, JSON.stringify({...data, name}));
 
     toast.current?.show({
       // TODO: need a new copy for the toast
