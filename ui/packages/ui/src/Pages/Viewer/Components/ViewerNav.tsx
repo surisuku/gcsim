@@ -3,7 +3,7 @@ import classNames from "classnames";
 import { MouseEvent, useRef, useState } from "react";
 import { useTranslation } from "react-i18next";
 import { SimResults } from "@gcsim/types";
-import { CopyToClipboard, SendToSimulator, Share } from "../../../Components/Buttons";
+import { CopyToClipboard, SaveConfig, SendToSimulator, Share } from "../../../Components/Buttons";
 
 const btnClass = classNames("hidden ml-[7px] sm:flex");
 
@@ -17,7 +17,7 @@ type NavProps = {
 export default ({ tabState, data, hash, running }: NavProps) => {
   const { t } = useTranslation();
   const [tabId, setTabId] = tabState;
-  const copyToast = useRef<Toaster>(null);
+  const toast = useRef<Toaster>(null);
   const shareState = useState<string | null>(null);
 
   return (
@@ -33,17 +33,18 @@ export default ({ tabState, data, hash, running }: NavProps) => {
       </Tab>
       <Tabs.Expander />
       <ButtonGroup>
-        <CopyToClipboard copyToast={copyToast} config={data?.config_file} className={btnClass} />
+        <SaveConfig toast={toast} data={data} className={btnClass} />
+        <CopyToClipboard copyToast={toast} config={data?.config_file} className={btnClass} />
         <SendToSimulator config={data?.config_file} />
         <Share
-            copyToast={copyToast}
+            copyToast={toast}
             shareState={shareState}
             data={data}
             hash={hash}
             running={running}
             className={btnClass} />
       </ButtonGroup>
-      <Toaster ref={copyToast} position={Position.TOP_RIGHT} />
+      <Toaster ref={toast} position={Position.TOP_RIGHT} />
     </Tabs>
   );
 };
