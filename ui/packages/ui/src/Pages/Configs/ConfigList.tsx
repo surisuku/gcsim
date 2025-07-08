@@ -1,4 +1,5 @@
 import {Viewport} from '@ui/Components';
+import {LocalConfig} from '.';
 import {ConfigItem} from './ConfigItem';
 
 export const ConfigList = () => {
@@ -21,10 +22,9 @@ export const ConfigList = () => {
         return undefined;
       }
 
-      // TODO: use strong types here
-      const configData = JSON.parse(config);
+      const data: LocalConfig = JSON.parse(config);
 
-      return <ConfigItem key={key} entry={configData} />;
+      return <ConfigItem key={key} entry={data} />;
     })
     .filter((o) => o);
 

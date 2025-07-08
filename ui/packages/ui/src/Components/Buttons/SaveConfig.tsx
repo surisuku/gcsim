@@ -8,13 +8,14 @@ import {
   Intent,
   Toaster,
 } from '@blueprintjs/core';
+import {LocalConfig} from '@ui/Pages';
 import classNames from 'classnames';
 import {memo, RefObject, useState} from 'react';
 import {useTranslation} from 'react-i18next';
 
 type Props = {
   toast: RefObject<Toaster>;
-  data?: any;
+  data?: LocalConfig;
   className?: string;
 };
 

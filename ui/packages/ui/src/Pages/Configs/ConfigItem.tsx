@@ -1,7 +1,7 @@
 import {AvatarCard, CardBadge} from '@gcsim/components';
+import {LocalConfig} from '.';
 
-// TODO: really should properly typify this lmao
-export const ConfigItem = ({entry}: {entry: any}) => {
+export const ConfigItem = ({entry}: {entry: LocalConfig}) => {
   return (
     <div className="m-2 flex w-full min-[420px]:w-min md:w-auto md:max-w-full flex-col gap-3 rounded-md bg-slate-700 p-2">
       <div className="flex w-full min-[420px]:w-min flex-col gap-2">
@@ -30,13 +30,13 @@ export const ConfigItem = ({entry}: {entry: any}) => {
   );
 };
 
-const getBadges = (entry: any) => {
+const getBadges = (entry: LocalConfig) => {
   return (
     <div className="flex w-full flex-row flex-wrap justify-center gap-1">
       <CardBadge title="mode" value={entry.mode ? 'ttk' : 'duration'} />
       <CardBadge
         title="target count"
-        value={(Object.keys(entry.target_details).length ?? 0).toString()}
+        value={(entry.target_details?.length ?? 0).toString()}
       />
       <CardBadge
         title="dps"
